@@ -16,7 +16,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/game/caveNew" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1R7ywqv1QTLLJWGc6wAEpcsVb7A" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -60,7 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1569032670670</updated>
       <workItem from="1569032673688" duration="885000" />
-      <workItem from="1569034483573" duration="438000" />
+      <workItem from="1569034483573" duration="1054000" />
     </task>
     <servers />
   </component>
