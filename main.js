@@ -1,7 +1,7 @@
 var config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
+  width: 980,
+  height: 700,
   scene: {
     preload: preload,
     create: create,
@@ -11,7 +11,7 @@ var config = {
     default: 'arcade',
     arcade: {
       gravity: {
-        y: 5000
+        y: 500
       },
       debug: false
     }
@@ -34,18 +34,18 @@ var Blocks = {
 
 function Block(game, x, y, type, collides, physics, canBreak) {
 
-  var block = game.add.sprite(x, y, type);
+  var block = game.add.image(x, y, type);
   if(physics){
   	game.physics.world.enable(block);
-	block.body.allowGravity = false;
-	block.body.setImmovable(true);
+  	block.body.allowGravity = false;
+  	block.body.setImmovable(true);
 }
 
   if(collides)game.physics.add.collider(player, block);
 
   if(canBreak){
   	block.on('pointerover', function(){
-                 console.log("test");
+            console.log("test");
         });
   }
 
@@ -58,7 +58,7 @@ function preload() {
   this.load.image("sky", "assets/sky.png");
   this.load.image("stone", "assets/stone.png");
   this.load.image("air", "assets/air.png");
-  this.load.image("player", "assets/player.png");
+  this.load.image("player", "assets/PlayerCharacter.png");
 
 }
 
@@ -80,26 +80,17 @@ function create() {
     "111111111111111111111111111111111111111111111",
     "110000000000000000000000000000000000000001111",
     "110000000000000000000000000000000000000000011",
-    "111111111000000000000000000000000000000000011",
-    "111111111000000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
-    "111111111100000000000000000000000000000000111",
     "111111111111111111111111111111111111111111111",
     "111111111111111111111111111111111111111111111"
 
   ];
 
   generateWorld(this, world_dat);
+  this.input.on('gameobjectdown',function(pointer, gameobject){
+
+    console.log("Hello World");
+
+  });
 
 }
 
@@ -114,10 +105,10 @@ function update() {
     player.x += 4;
   }
 
-  //controls the up moverment for the player with curser and the w key
+  //controls the up movement for the player with curser and the w key
   if (cursors.up.isDown && player.body.touching.down) {
     console.log("up");
-    player.body.setVelocityY(-500);
+    player.body.setVelocityY(-200);
   }
 }
 
@@ -127,10 +118,10 @@ function generateWorld(game, world) {
     var tiles = world[i].split("");
     for (var a = 0; a < tiles.length; a++) {
       if (tiles[a] == 1) {
-        new Blocks.STONE(game, 16 * a, 16 * i);
+        new Blocks.STONE(game, 128 * a, 128 * i);
       }
       if (tiles[a] == 0) {
-        new Blocks.AIR(game, 16 * a, 16 * i);
+        new Blocks.AIR(game, 126 * a, 128 * i);
       }
     }
   }
