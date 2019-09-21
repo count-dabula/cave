@@ -11,7 +11,7 @@ var config = {
     default: 'arcade',
     arcade: {
       gravity: {
-        y: 200
+        y: 500
       },
       debug: false
     }
@@ -115,9 +115,10 @@ function update() {
   }
 
   //controls the up moverment for the player with curser and the w key
+  //jUMP
   if (cursors.up.isDown && player.body.touching.down) {
     console.log("up");
-    player.body.setVelocityY(500);
+    player.body.setVelocityY(-500);
   }
 }
 
